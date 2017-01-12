@@ -24,9 +24,9 @@ var helpers = {
 
   saveToDB: function(searchTerm) {
   	console.log("inside the savetoDB function");
-  	axios.post("/api", searchTerm)
+  	axios.post("/api", {searchTerm: searchTerm})
   	.then(function(response) {
-  		console.log("Saved search");
+  		console.log("Successfully saved search");
   	});
   }
 

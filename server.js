@@ -23,7 +23,7 @@ app.use(express.static("./public"));
 // MongoDB configuration (Change this URL to your own DB)
 mongoose.connect("mongodb://localhost/addressfinder");
 var db = mongoose.connection;
-console.log(db);
+
 db.on("error", function(err) {
   console.log("Mongoose Error: ", err);
 });
@@ -57,14 +57,15 @@ app.get("/api", function(req, res) {
 // This is the route we will send POST requests to save each click.
 // We will call this route the moment the "click" or "reset" button is pressed.
 app.post("/api", function(req, res) {
-  console.log("req body is " + req.body);
-  var searchInput = req.body;
-  var createDate = Date.now();
+  console.log("req body is ");
+  console.log(req.body);
 
-  // Note how this route utilizes the findOneAndUpdate function to update the clickCount
-  // { upsert: true } is an optional object we can pass into the findOneAndUpdate method
-  // If included, Mongoose will create a new document matching the description if one is not found
-  var newHistory = new History(searchInput, createDate)
+  var searchInput = req.body.searchTerm;
+  var createDate = Date.now();
+  console.log("search input is " + searchInput);
+
+  
+  var newHistory = new History({input: searchInput, date: createDate});
   newHistory.save(function(err, doc) {
     if (err) throw err;
     res.send(doc);
