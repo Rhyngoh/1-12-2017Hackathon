@@ -3,9 +3,12 @@ var React = require("react");
 
 // Creating the Results component
 var History = React.createClass({
-  var historyList = this.props.list.map(function(obj){
+  generateList: function(){
+    historyList =  this.props.list.map(function(obj){
     <li>{obj.term} - {obj.date}</li>
   })
+    return historyList;
+  },
   // Here we describe this component's render method
   render: function() {
     return (
@@ -14,7 +17,7 @@ var History = React.createClass({
           <h3 className="panel-title text-center">Search History </h3>
         </div>
         <div className="panel-body text-center">
-          <ul>{historyList}</ul>
+          <ul>{this.generateList.bind(this)}</ul>
         </div>
       </div>
     );
