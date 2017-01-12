@@ -28,6 +28,24 @@ var helpers = {
   	.then(function(response) {
   		console.log("Successfully saved search");
   	});
+  },
+
+  searchTermsFromDB: function() {
+    axios.get("/api")
+    .then(function(response) {
+      console.log(response);
+
+      var terms = [];
+      for (var i = 0; i < response.data.length; i++) {
+        var currentSearch = {};
+        currentSearch.input = response.data[i].input;
+        currentSearch.date = response.data[i].date;
+        console.log("current search: " + currentSearch);
+        terms.push(currentSearch);
+      }
+      console.log(terms);
+      return terms;
+    });
   }
 
 };

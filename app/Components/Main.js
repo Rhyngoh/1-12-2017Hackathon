@@ -17,6 +17,11 @@ var Main = React.createClass({
     return { searchTerm: "", results: "", list:[] };
   },
 
+  componentWillMount: function() {
+    var listFromDB = helpers.searchTermsFromDB();
+    this.setState({ list: listFromDB });
+  },
+
   // If the component updates we'll run this code
   componentDidUpdate: function(prevProps, prevState) {
 
