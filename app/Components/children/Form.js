@@ -11,9 +11,12 @@ var Form = React.createClass({
 
   // This function will respond to the user input
   handleChange: function(event) {
-
-    this.setState({ term: event.target.value });
-
+    // Here we create syntax to capture any change in text to the query terms (pre-search).
+    // See this Stack Overflow answer for more details:
+    // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+    var newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
   },
 
   // When a user submits...
