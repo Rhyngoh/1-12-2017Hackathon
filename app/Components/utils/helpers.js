@@ -20,6 +20,13 @@ var helpers = {
       return response.data.results[0].formatted;
     });
 
+  },
+
+  saveToDB: function(searchTerm) {
+  	axios.post("/api", searchTerm)
+  	.then(function(response) {
+  		console.log("Saved search");
+  	});
   }
 
 };

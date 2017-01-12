@@ -23,6 +23,8 @@ var Main = React.createClass({
     if (prevState.searchTerm !== this.state.searchTerm) {
       console.log("UPDATED");
 
+      helpers.saveToDB(this.state.searchTerm);
+
       helpers.runQuery(this.state.searchTerm).then(function(data) {
         if (data !== this.state.results) {
           console.log("HERE");
