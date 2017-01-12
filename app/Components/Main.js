@@ -14,12 +14,15 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
-    return { searchTerm: "", results: "", list:[] };
+    return { searchTerm: "", results: "", list:"" };
   },
 
   componentWillMount: function() {
-    var listFromDB = helpers.searchTermsFromDB();
-    this.setState({ list: listFromDB });
+    helpers.searchTermsFromDB().then(function(data){
+      console.log(data, "data");
+      this.setState({ list: data });
+    }.bind(this));
+    
   },
 
   // If the component updates we'll run this code
