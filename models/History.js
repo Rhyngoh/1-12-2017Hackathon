@@ -11,7 +11,7 @@ var SearchHistory = new Schema({
 
   },
   date: {
-    type: String
+    type: Date
   }
 });
 
