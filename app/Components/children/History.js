@@ -4,7 +4,7 @@ var React = require("react");
 // Creating the Results component
 var History = React.createClass({
   var historyList = this.props.list.map(function(obj){
-    <li>{obj}</li>
+    <li>{obj.term} - {obj.date}</li>
   })
   // Here we describe this component's render method
   render: function() {
