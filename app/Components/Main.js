@@ -14,7 +14,7 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
-    return { searchTerm: "", results: "", history:[] };
+    return { searchTerm: "", results: "", list:[] };
   },
 
   // If the component updates we'll run this code
@@ -24,6 +24,10 @@ var Main = React.createClass({
       console.log("UPDATED");
 
       helpers.saveToDB(this.state.searchTerm);
+      var array= this.state.list;
+      array.push(this.state.searchTerm);
+      console.log("array", array);
+      this.state.list = array;
 
       helpers.runQuery(this.state.searchTerm).then(function(data) {
         if (data !== this.state.results) {
@@ -75,7 +79,7 @@ var Main = React.createClass({
 
         <div className="row">
           <div className="col-md-12">
-          <History list={this.state.history} />
+          <History list={this.state.list} />
           </div>
         </div>
 
