@@ -14,7 +14,7 @@ var History = React.createClass({
           {
             this.props.list.map(function(obj){
               console.log(obj);
-            return <p key={obj}>{obj}</p>
+            return <p key={obj.input}>{obj.input} - {obj.date}</p>
            })
           }
         </div>
