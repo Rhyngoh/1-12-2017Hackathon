@@ -30,7 +30,9 @@ var Main = React.createClass({
           console.log("HERE");
           console.log(data);
 
+
           this.setState({ results: data });
+          
         }
 
         // This code is necessary to bind the keyword "this" when we say this.setState

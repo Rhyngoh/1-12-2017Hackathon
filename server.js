@@ -57,18 +57,15 @@ app.get("/api", function(req, res) {
 // This is the route we will send POST requests to save each click.
 // We will call this route the moment the "click" or "reset" button is pressed.
 app.post("/api", function(req, res) {
-  console.log(req.body);
+  console.log("req body is " + req.body);
   var searchInput = req.body;
   var createDate = Date.now();
 
   // Note how this route utilizes the findOneAndUpdate function to update the clickCount
   // { upsert: true } is an optional object we can pass into the findOneAndUpdate method
   // If included, Mongoose will create a new document matching the description if one is not found
-
-  History.insert({
-    input: searchInput,
-    date: createDate
-  }, function(err, doc) {
+  var newHistory = new History(searchInput, createDate)
+  newHistory.save(function(err, doc) {
     if (err) throw err;
     res.send(doc);
   });
