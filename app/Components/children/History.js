@@ -17,7 +17,7 @@ var History = React.createClass({
           <h3 className="panel-title text-center">Search History </h3>
         </div>
         <div className="panel-body text-center">
-          <ul>{this.generateList.bind(this)}</ul>
+          <ul>{this.generateList}</ul>
         </div>
       </div>
     );
